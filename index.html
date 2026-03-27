@@ -44,7 +44,6 @@
         .header h2 { color: #003366; margin: 0; font-size: 24px; text-transform: uppercase; }
         .header p { color: #666; margin: 5px 0 0; font-size: 14px; }
 
-        /* --- Section Titles --- */
         .section-title {
             background: #f8f9fa;
             color: #003366;
@@ -56,7 +55,6 @@
             border-left: 5px solid #003366;
         }
 
-        /* --- Grid System --- */
         .grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -91,7 +89,6 @@
 
         .full-width { grid-column: 1 / -1; }
 
-        /* --- Declaration --- */
         .declaration-box {
             margin-top: 30px;
             padding: 20px;
@@ -117,7 +114,6 @@
             line-height: 1.5;
         }
 
-        /* --- Submit Button --- */
         .submit-btn {
             width: 100%;
             padding: 18px;
@@ -134,7 +130,6 @@
 
         .submit-btn:hover { background-color: #0055a4; }
 
-        /* --- Modals --- */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -349,7 +344,6 @@
     }
 
     function sendTo(method) {
-        // Sari Fields fetch kar rahe hain
         const name = document.getElementById('full_name').value;
         const father = document.getElementById('father_name').value;
         const dob = document.getElementById('dob').value;
@@ -369,34 +363,40 @@
         const occupation = document.getElementById('occupation').value;
         const income = document.getElementById('income').value;
 
-        // Message Format for WhatsApp
-        const message = `*NORTHGATE VISA APPLICATION*
+        // WhatsApp/Email Message Format (No Stars)
+        const message = `NORTHGATE VISA APPLICATION
 ----------------------------
-*👤 APPLICANT DETAILS*
-*Name:* ${name}
-*Father/Husband:* ${father}
-*DOB:* ${dob}
-*Passport/CNIC:* ${passport}
-*Contact:* ${contact}
-*Email:* ${email}
 
-*✈️ TRAVEL INFO*
-*Purpose:* ${purpose}
-*Travel Date:* ${travelDate}
-*Duration:* ${duration}
-*City in USA:* ${city}
+APPLICANT DETAILS
 
-*🌍 HISTORY & FAMILY*
-*Intl Travel:* ${intlTravel}
-*Countries:* ${countries}
-*Prev Visa:* ${prevVisa}
-*Marital Status:* ${marital}
-*Spouse:* ${spouse}
-*Children:* ${children}
+Name: ${name}
+Father/Husband: ${father}
+DOB: ${dob}
+Passport/CNIC: ${passport}
+Contact: ${contact}
+Email: ${email}
 
-*💼 WORK & INCOME*
-*Occupation:* ${occupation}
-*Monthly Income:* ${income}
+TRAVEL INFO
+
+Purpose: ${purpose}
+Travel Date: ${travelDate}
+Duration: ${duration}
+City in USA: ${city}
+
+HISTORY & FAMILY
+
+Intl Travel: ${intlTravel}
+Countries: ${countries}
+Prev Visa: ${prevVisa}
+Marital Status: ${marital}
+Spouse: ${spouse}
+Children: ${children}
+
+WORK & INCOME
+
+Occupation: ${occupation}
+Monthly Income: ${income}
+
 ----------------------------`;
 
         const encodedMsg = encodeURIComponent(message);
