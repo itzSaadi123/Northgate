@@ -194,6 +194,7 @@
     </div>
 
     <div class="header">
+        <h2>NorthGate Visa Service Center</h2>
         <p><strong>U.S VISA APPLICANT INFORMATION FORM</strong></p>
     </div>
 
@@ -348,29 +349,63 @@
     }
 
     function sendTo(method) {
+        // Sari Fields fetch kar rahe hain
         const name = document.getElementById('full_name').value;
         const father = document.getElementById('father_name').value;
+        const dob = document.getElementById('dob').value;
         const passport = document.getElementById('passport').value;
         const contact = document.getElementById('contact').value;
+        const email = document.getElementById('email_id').value;
         const purpose = document.getElementById('purpose').value;
+        const travelDate = document.getElementById('travel_date').value;
+        const duration = document.getElementById('duration').value;
+        const city = document.getElementById('usa_city').value;
+        const intlTravel = document.getElementById('intl_travel').value;
+        const countries = document.getElementById('countries_visited').value;
+        const prevVisa = document.getElementById('prev_visa').value;
+        const marital = document.getElementById('marital_status').value;
+        const spouse = document.getElementById('spouse_name').value;
+        const children = document.getElementById('children_details').value;
+        const occupation = document.getElementById('occupation').value;
         const income = document.getElementById('income').value;
 
-        const waText = `*NORTHGATE VISA APPLICATION*%0A` +
-                       `------------------------%0A` +
-                       `*Name:* ${name}%0A` +
-                       `*Father:* ${father}%0A` +
-                       `*Passport/CNIC:* ${passport}%0A` +
-                       `*Contact:* ${contact}%0A` +
-                       `*Purpose:* ${purpose}%0A` +
-                       `*Income:* ${income}%0A` +
-                       `------------------------`;
+        // Message Format for WhatsApp
+        const message = `*NORTHGATE VISA APPLICATION*
+----------------------------
+*👤 APPLICANT DETAILS*
+*Name:* ${name}
+*Father/Husband:* ${father}
+*DOB:* ${dob}
+*Passport/CNIC:* ${passport}
+*Contact:* ${contact}
+*Email:* ${email}
 
-        const emailBody = `NEW VISA APPLICATION\n\nName: ${name}\nFather: ${father}\nPassport: ${passport}\nContact: ${contact}\nPurpose: ${purpose}\nIncome: ${income}`;
+*✈️ TRAVEL INFO*
+*Purpose:* ${purpose}
+*Travel Date:* ${travelDate}
+*Duration:* ${duration}
+*City in USA:* ${city}
+
+*🌍 HISTORY & FAMILY*
+*Intl Travel:* ${intlTravel}
+*Countries:* ${countries}
+*Prev Visa:* ${prevVisa}
+*Marital Status:* ${marital}
+*Spouse:* ${spouse}
+*Children:* ${children}
+
+*💼 WORK & INCOME*
+*Occupation:* ${occupation}
+*Monthly Income:* ${income}
+----------------------------`;
+
+        const encodedMsg = encodeURIComponent(message);
 
         if (method === 'whatsapp') {
-            window.open(`https://wa.me/923452613587?text=${waText}`, '_blank');
+            window.open(`https://wa.me/923452613587?text=${encodedMsg}`, '_blank');
         } else {
-            window.location.href = `mailto:northgatevisaservicecenter@gmail.com?subject=New Visa Application&body=${encodeURIComponent(emailBody)}`;
+            const emailSubject = encodeURIComponent(`New Visa Application - ${name}`);
+            window.location.href = `mailto:northgatevisaservicecenter@gmail.com?subject=${emailSubject}&body=${encodedMsg}`;
         }
 
         selModal.style.display = 'none';
