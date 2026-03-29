@@ -20,7 +20,9 @@
         input, select, textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 14px; }
         .full-width { grid-column: 1 / -1; }
         
-        /* Checkbox Grid for Visa Types */
+        /* Hide Countries Box by Default */
+        #countries_container { display: none; }
+
         .visa-checkbox-grid { display: grid; grid-template-columns: 1fr; gap: 10px; background: #fafafa; padding: 15px; border: 1px solid #ddd; border-radius: 8px; }
         @media (min-width: 600px) { .visa-checkbox-grid { grid-template-columns: 1fr 1fr; } }
         .checkbox-item { display: flex; align-items: center; gap: 10px; font-size: 13px; cursor: pointer; }
@@ -43,7 +45,6 @@
 <div class="form-container">
     <div class="logo-container"><img src="logo.png" alt="NorthGate Logo"></div>
     <div class="header">
-        <h2>NorthGate Visa Service Center</h2>
         <p><strong>U.S VISA APPLICANT INFORMATION FORM</strong></p>
     </div>
 
@@ -81,7 +82,15 @@
         <div class="section-title">🌍 Travel History</div>
         <div class="grid">
             <div class="input-group full-width">
-                <label>Countries Visited (Type countries where you have traveled)</label>
+                <label>Have you travelled internationally before? *</label>
+                <select name="intl_travel" id="intl_travel" onchange="toggleCountries()" required>
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+            </div>
+
+            <div class="input-group full-width" id="countries_container">
+                <label>Countries Visited</label>
                 <textarea name="countries_visited" id="countries_visited" rows="2" placeholder="e.g. Turkey, UAE, UK"></textarea>
             </div>
             
@@ -150,23 +159,34 @@
 </div>
 
 <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwdIkuX6htuSi0dPsmLOm3ZIqzePjtNNxsHAypIRbj_YRm4HZR366txApUeYZdeHo4Lsg/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxDlpUL34uCWmMLXLoJpG66IR0tSZsBw1MFSxA9h95D4CNflEYM6lgHKDjWTY9rl2-K4w/exec';
     const form = document.getElementById('visaForm');
     const btn = document.getElementById('submitBtn');
+
+    // Yes/No logic for Countries Visited
+    function toggleCountries() {
+        const status = document.getElementById('intl_travel').value;
+        const container = document.getElementById('countries_container');
+        if (status === 'Yes') {
+            container.style.display = 'block';
+        } else {
+            container.style.display = 'none';
+            document.getElementById('countries_visited').value = ''; // Reset if hidden
+        }
+    }
 
     form.addEventListener('submit', e => {
         e.preventDefault();
         btn.disabled = true;
         btn.innerHTML = "Sending... Please Wait";
 
-        // Checkboxes ke data ko collect karna
         const checkboxes = document.querySelectorAll('input[name="visa_type"]:checked');
         let selectedVisas = Array.from(checkboxes).map(cb => cb.value).join(", ");
         if (selectedVisas === "") selectedVisas = "None";
 
         const formData = new FormData(form);
         const params = new URLSearchParams(formData);
-        params.set('prev_visa', selectedVisas); // Sheet mein ye string jaye gi
+        params.set('prev_visa', selectedVisas);
 
         fetch(scriptURL + "?" + params.toString(), { method: 'GET', mode: 'no-cors' })
         .then(() => {
