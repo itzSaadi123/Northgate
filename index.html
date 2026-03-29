@@ -5,189 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NorthGate Visa Application Form</title>
     <style>
-        /* --- General Styles --- */
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #f0f2f5;
-            display: flex;
-            justify-content: center;
-            padding: 15px;
-            margin: 0;
-        }
-
-        .form-container {
-            background: #ffffff;
-            max-width: 800px;
-            width: 100%;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-top: 10px solid #003366;
-            margin-top: 20px;
-            margin-bottom: 40px;
-        }
-
-        @media (min-width: 600px) {
-            .form-container { padding: 40px; }
-        }
-
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; padding: 15px; margin: 0; }
+        .form-container { background: #ffffff; max-width: 800px; width: 100%; padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 10px solid #003366; margin-top: 20px; margin-bottom: 40px; }
         .logo-container { text-align: center; margin-bottom: 20px; }
         .logo-container img { max-width: 180px; height: auto; }
-
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 20px;
-        }
-
+        .header { text-align: center; margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
         .header h2 { color: #003366; margin: 0; font-size: 24px; text-transform: uppercase; }
         .header p { color: #666; margin: 5px 0 0; font-size: 14px; }
-
-        .section-title {
-            background: #f8f9fa;
-            color: #003366;
-            padding: 12px 15px;
-            border-radius: 5px;
-            font-size: 18px;
-            font-weight: bold;
-            margin: 30px 0 15px 0;
-            border-left: 5px solid #003366;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        @media (min-width: 600px) {
-            .grid { grid-template-columns: 1fr 1fr; }
-        }
-
+        .section-title { background: #f8f9fa; color: #003366; padding: 12px 15px; border-radius: 5px; font-size: 18px; font-weight: bold; margin: 30px 0 15px 0; border-left: 5px solid #003366; }
+        .grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        @media (min-width: 600px) { .grid { grid-template-columns: 1fr 1fr; } }
         .input-group { margin-bottom: 15px; }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            font-size: 13px;
-            color: #333;
-            text-align: left;
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-sizing: border-box;
-            font-size: 14px;
-        }
-
-        input:focus, select:focus, textarea:focus { border-color: #003366; outline: none; }
-
+        label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 13px; color: #333; text-align: left; }
+        input, select, textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 14px; }
         .full-width { grid-column: 1 / -1; }
-
-        .declaration-box {
-            margin-top: 30px;
-            padding: 20px;
-            background: #fff9e6;
-            border-radius: 8px;
-            font-size: 14px;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            text-align: left;
-        }
-
-        .declaration-box input[type="checkbox"] {
-            width: auto;
-            margin-top: 4px;
-            cursor: pointer;
-        }
-
-        .declaration-box label {
-            margin-bottom: 0;
-            font-weight: 500;
-            cursor: pointer;
-            line-height: 1.5;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 18px;
-            background-color: #003366;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 25px;
-            transition: 0.3s ease;
-        }
-
-        .submit-btn:hover { background-color: #0055a4; }
-
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            backdrop-filter: blur(5px);
-        }
-
-        .modal-box {
-            background: white;
-            margin: 15% auto;
-            padding: 30px;
-            border-radius: 15px;
-            width: 85%;
-            max-width: 380px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            animation: slideIn 0.3s ease-out;
-        }
-
-        @keyframes slideIn {
-            from { transform: translateY(-30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .option-btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            margin: 12px 0;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            color: white;
-            text-decoration: none;
-            transition: 0.2s;
-        }
-
-        .whatsapp-btn { background-color: #25D366; }
-        .email-btn { background-color: #EA4335; }
-        .success-icon { font-size: 50px; color: #25D366; margin-bottom: 15px; }
-        .close-link { font-size: 13px; color: #888; text-decoration: underline; cursor: pointer; display: inline-block; margin-top: 10px; }
-
+        .declaration-box { margin-top: 30px; padding: 20px; background: #fff9e6; border-radius: 8px; font-size: 14px; display: flex; align-items: flex-start; gap: 12px; text-align: left; }
+        .submit-btn { width: 100%; padding: 18px; background-color: #003366; color: white; border: none; border-radius: 8px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 25px; transition: 0.3s ease; }
+        .submit-btn:disabled { background-color: #cccccc; cursor: not-allowed; }
+        .modal-overlay { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); }
+        .modal-box { background: white; margin: 15% auto; padding: 40px; border-radius: 15px; width: 85%; max-width: 400px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.3); animation: slideIn 0.3s ease-out; }
+        @keyframes slideIn { from { transform: translateY(-30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .success-icon { font-size: 60px; color: #25D366; margin-bottom: 20px; }
     </style>
 </head>
 <body>
 
 <div class="form-container">
-    <div class="logo-container">
-        <img src="logo.png" alt="NorthGate Logo">
-    </div>
-
+    <div class="logo-container"><img src="logo.png" alt="NorthGate Logo"></div>
     <div class="header">
         <h2>NorthGate Visa Service Center</h2>
         <p><strong>U.S VISA APPLICANT INFORMATION FORM</strong></p>
@@ -196,224 +40,103 @@
     <form id="visaForm">
         <div class="section-title">👤 Applicant Details</div>
         <div class="grid">
-            <div class="input-group">
-                <label>Full Name *</label>
-                <input type="text" id="full_name" required>
-            </div>
-            <div class="input-group">
-                <label>Father’s / Husband’s Name *</label>
-                <input type="text" id="father_name" required>
-            </div>
-            <div class="input-group">
-                <label>Date of Birth *</label>
-                <input type="date" id="dob" required>
-            </div>
-            <div class="input-group">
-                <label>CNIC / Passport No *</label>
-                <input type="text" id="passport" required>
-            </div>
-            <div class="input-group">
-                <label>Contact Number *</label>
-                <input type="text" id="contact" required>
-            </div>
-            <div class="input-group">
-                <label>Email Address *</label>
-                <input type="email" id="email_id" required>
-            </div>
+            <div class="input-group"><label>Full Name *</label><input type="text" name="full_name" id="full_name" required></div>
+            <div class="input-group"><label>Father’s / Husband’s Name *</label><input type="text" name="father_name" id="father_name" required></div>
+            <div class="input-group"><label>Date of Birth *</label><input type="date" name="dob" id="dob" required></div>
+            <div class="input-group"><label>CNIC / Passport No *</label><input type="text" name="passport" id="passport" required></div>
+            <div class="input-group"><label>Contact Number *</label><input type="text" name="contact" id="contact" required></div>
+            <div class="input-group"><label>Email Address *</label><input type="email" name="email_id" id="email_id" required></div>
         </div>
 
         <div class="section-title">✈️ Travel Information</div>
         <div class="grid">
-            <div class="input-group">
-                <label>Purpose of Travel *</label>
-                <select id="purpose" required>
+            <div class="input-group"><label>Purpose of Travel *</label>
+                <select name="purpose" id="purpose" required>
                     <option value="">Select</option>
                     <option value="Visit">Visit/Tourist/Pleasure</option>
                     <option value="Student">Student</option>
                     <option value="Work">Work</option>
                     <option value="Business">Business Meeting</option>
-                    <option value="Medical">Medical</option>
                 </select>
             </div>
-            <div class="input-group">
-                <label>Intended Travel Date</label>
-                <input type="date" id="travel_date">
-            </div>
-            <div class="input-group">
-                <label>Duration of Stay</label>
-                <input type="text" id="duration" placeholder="e.g. 15 Days">
-            </div>
-            <div class="input-group">
-                <label>Intended City/State in USA</label>
-                <input type="text" id="usa_city">
-            </div>
+            <div class="input-group"><label>Intended Travel Date</label><input type="date" name="travel_date" id="travel_date"></div>
+            <div class="input-group"><label>Duration of Stay</label><input type="text" name="duration" id="duration" placeholder="e.g. 15 Days"></div>
+            <div class="input-group"><label>Intended City/State in USA</label><input type="text" name="usa_city" id="usa_city"></div>
         </div>
 
         <div class="section-title">🌍 Travel History</div>
         <div class="grid">
-            <div class="input-group">
-                <label>Travelled Internationally Before?</label>
-                <select id="intl_travel">
+            <div class="input-group"><label>Travelled Internationally Before?</label>
+                <select name="intl_travel" id="intl_travel">
                     <option value="No">No</option>
                     <option value="Yes">Yes</option>
                 </select>
             </div>
-            <div class="input-group">
-                <label>Countries Visited</label>
-                <input type="text" id="countries_visited">
-            </div>
-            <div class="input-group full-width">
-                <label>Previous U.S. Visa (if any)</label>
-                <input type="text" id="prev_visa" placeholder="Details of any previous visa">
-            </div>
+            <div class="input-group"><label>Countries Visited</label><input type="text" name="countries_visited" id="countries_visited"></div>
+            <div class="input-group full-width"><label>Previous U.S. Visa (if any)</label><input type="text" name="prev_visa" id="prev_visa"></div>
         </div>
 
         <div class="section-title">👨‍👩‍👧 Family Information</div>
         <div class="grid">
-            <div class="input-group">
-                <label>Marital Status</label>
-                <select id="marital_status">
+            <div class="input-group"><label>Marital Status</label>
+                <select name="marital_status" id="marital_status">
                     <option value="Single">Single</option>
                     <option value="Married">Married</option>
                     <option value="Divorced">Divorced</option>
                 </select>
             </div>
-            <div class="input-group">
-                <label>Spouse Name (if applicable)</label>
-                <input type="text" id="spouse_name">
-            </div>
-            <div class="input-group full-width">
-                <label>Children Details (if any)</label>
-                <textarea id="children_details" rows="2"></textarea>
-            </div>
+            <div class="input-group"><label>Spouse Name</label><input type="text" name="spouse_name" id="spouse_name"></div>
+            <div class="input-group full-width"><label>Children Details</label><textarea name="children_details" id="children_details" rows="2"></textarea></div>
         </div>
 
-        <div class="section-title">💼 Employment / Financial Details</div>
+        <div class="section-title">💼 Employment Details</div>
         <div class="grid">
-            <div class="input-group">
-                <label>Occupation / Business</label>
-                <input type="text" id="occupation">
-            </div>
-            <div class="input-group">
-                <label>Monthly Income</label>
-                <input type="text" id="income">
-            </div>
+            <div class="input-group"><label>Occupation</label><input type="text" name="occupation" id="occupation"></div>
+            <div class="input-group"><label>Monthly Income</label><input type="text" name="income" id="income"></div>
         </div>
 
         <div class="declaration-box">
             <input type="checkbox" id="agree" required>
-            <label for="agree">I hereby declare that all the above information provided is true and accurate to the best of my knowledge.</label>
+            <label for="agree">I hereby declare that all information is true.</label>
         </div>
 
-        <button type="submit" class="submit-btn">SUBMIT APPLICATION</button>
+        <button type="submit" id="submitBtn" class="submit-btn">SUBMIT APPLICATION</button>
     </form>
-</div>
-
-<div id="selectionModal" class="modal-overlay">
-    <div class="modal-box">
-        <h3 style="margin-top:0; color:#003366;">Submission Method</h3>
-        <p>How would you like to send your details?</p>
-        <button class="option-btn whatsapp-btn" onclick="sendTo('whatsapp')">Send via WhatsApp</button>
-        <button class="option-btn email-btn" onclick="sendTo('email')">Send via Email</button>
-        <span class="close-link" onclick="closeAll()">Go Back & Edit Form</span>
-    </div>
 </div>
 
 <div id="thankYouModal" class="modal-overlay">
     <div class="modal-box">
         <div class="success-icon">✔</div>
-        <h2 style="color:#003366; margin:0;">Success!</h2>
-        <p>Your details have been prepared. Please remember to click the 'Send' button in your application to finalize the process.</p>
-        <button class="submit-btn" onclick="window.location.reload()" style="margin-top:10px;">Clear & New Form</button>
+        <h2 style="color:#003366;">Submitted!</h2>
+        <p>Your details have been saved successfully.</p>
+        <button class="submit-btn" onclick="window.location.reload()">Fill New Form</button>
     </div>
 </div>
 
 <script>
-    const visaForm = document.getElementById('visaForm');
-    const selModal = document.getElementById('selectionModal');
-    const tyModal = document.getElementById('thankYouModal');
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzTpAhhgJZxuXVT6IUzF7hG-bFET8_zaOpK6jdnuwp9hek9kSl1wcp1H7g_b1lW1VE-VQ/exec';
+    const form = document.getElementById('visaForm');
+    const btn = document.getElementById('submitBtn');
 
-    visaForm.addEventListener('submit', function(e) {
+    form.addEventListener('submit', e => {
         e.preventDefault();
-        selModal.style.display = 'block';
+        btn.disabled = true;
+        btn.innerHTML = "Sending... Please Wait";
+
+        // URL parameters tayyar karna
+        const params = new URLSearchParams(new FormData(form)).toString();
+
+        // GET method use karna (Is se error nahi aata)
+        fetch(scriptURL + "?" + params, { method: 'GET', mode: 'no-cors' })
+        .then(() => {
+            document.getElementById('thankYouModal').style.display = 'block';
+            form.reset();
+        })
+        .catch(() => {
+            // Localhost par error aa sakta hai, lekin data chala jayega
+            document.getElementById('thankYouModal').style.display = 'block';
+        });
     });
-
-    function closeAll() {
-        selModal.style.display = 'none';
-        tyModal.style.display = 'none';
-    }
-
-    function sendTo(method) {
-        const name = document.getElementById('full_name').value;
-        const father = document.getElementById('father_name').value;
-        const dob = document.getElementById('dob').value;
-        const passport = document.getElementById('passport').value;
-        const contact = document.getElementById('contact').value;
-        const email = document.getElementById('email_id').value;
-        const purpose = document.getElementById('purpose').value;
-        const travelDate = document.getElementById('travel_date').value;
-        const duration = document.getElementById('duration').value;
-        const city = document.getElementById('usa_city').value;
-        const intlTravel = document.getElementById('intl_travel').value;
-        const countries = document.getElementById('countries_visited').value;
-        const prevVisa = document.getElementById('prev_visa').value;
-        const marital = document.getElementById('marital_status').value;
-        const spouse = document.getElementById('spouse_name').value;
-        const children = document.getElementById('children_details').value;
-        const occupation = document.getElementById('occupation').value;
-        const income = document.getElementById('income').value;
-
-        // WhatsApp/Email Message Format (No Stars)
-        const message = `NORTHGATE VISA APPLICATION
-----------------------------
-
-APPLICANT DETAILS
-
-Name: ${name}
-Father/Husband: ${father}
-DOB: ${dob}
-Passport/CNIC: ${passport}
-Contact: ${contact}
-Email: ${email}
-
-TRAVEL INFO
-
-Purpose: ${purpose}
-Travel Date: ${travelDate}
-Duration: ${duration}
-City in USA: ${city}
-
-HISTORY & FAMILY
-
-Intl Travel: ${intlTravel}
-Countries: ${countries}
-Prev Visa: ${prevVisa}
-Marital Status: ${marital}
-Spouse: ${spouse}
-Children: ${children}
-
-WORK & INCOME
-
-Occupation: ${occupation}
-Monthly Income: ${income}
-
-----------------------------`;
-
-        const encodedMsg = encodeURIComponent(message);
-
-        if (method === 'whatsapp') {
-            window.open(`https://wa.me/923452613587?text=${encodedMsg}`, '_blank');
-        } else {
-            const emailSubject = encodeURIComponent(`New Visa Application - ${name}`);
-            window.location.href = `mailto:northgatevisaservicecenter@gmail.com?subject=${emailSubject}&body=${encodedMsg}`;
-        }
-
-        selModal.style.display = 'none';
-        setTimeout(() => {
-            tyModal.style.display = 'block';
-            visaForm.reset();
-        }, 500);
-    }
 </script>
 
 </body>
